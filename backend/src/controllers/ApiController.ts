@@ -91,7 +91,7 @@ export const index = async (req: Request, res: Response): Promise<Response> => {
 
   try {
     await schema.validate(newContact);
-  } catch (err: any) {
+  } catch (err:any) {
     throw new AppError(err.message);
   }
 

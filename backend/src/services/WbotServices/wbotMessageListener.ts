@@ -105,7 +105,7 @@ const verifyMediaMessage = async (
       media.data,
       "base64"
     );
-  } catch (err) {
+  } catch (err:any) {
     Sentry.captureException(err);
     logger.error(err);
   }
@@ -344,7 +344,7 @@ const handleMessage = async (
             number: ob.number.replace(/\D/g, "")
           });
         }
-      } catch (error) {
+      } catch (error:any) {
         console.log(error);
       }
     }
@@ -389,7 +389,7 @@ const handleMessage = async (
               name: cont.name,
               number: cont.number
             });
-          } catch (error) {
+          } catch (err:anyor) {
             if (error.message === "ERR_DUPLICATED_CONTACT") {
               const cont = await GetContactService({
                 name: ob.name,
@@ -405,11 +405,11 @@ const handleMessage = async (
           }
         }
         msg.body = JSON.stringify(conts);
-      } catch (error) {
+      } catch (err:anyor) {
         console.log(error);
       }
     } */
-  } catch (err) {
+  } catch (err:any) {
     Sentry.captureException(err);
     logger.error(`Error handling whatsapp message: Err: ${err}`);
   }
@@ -440,7 +440,7 @@ const handleMsgAck = async (msg: WbotMessage, ack: MessageAck) => {
       action: "update",
       message: messageToUpdate
     });
-  } catch (err) {
+  } catch (err:any) {
     Sentry.captureException(err);
     logger.error(`Error handling message ack. Err: ${err}`);
   }
